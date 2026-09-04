@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "title": "AI Investment Office",
+  "category": "AI",
+  "summary": "27の専門AI役割が日本株を分業分析し、反対意見・リスク・根拠を1枚の決裁書へまとめ、人間が最終判断する投資研究司令室。",
+  "tags": ["日本株", "AI", "投資分析", "Multi-Agent", "Red Team", "Risk", "Evidence"],
+  "color": "violet",
+  "status": "active",
+  "visibility": "public",
+  "manualUrl": "https://branzfamily01.github.io/ai-investment-office/manual.html"
+}
