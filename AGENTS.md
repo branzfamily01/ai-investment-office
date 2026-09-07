@@ -1,5 +1,22 @@
 # AGENTS.md — AI Investment Office
 
+## Astra–Sol governance
+- GPT-6 Astra: **Chief Architect** for root research/data contracts, source-ingestion architecture, deterministic risk engine, security, durable backend/source-of-truth, and any major automation/execution boundary.
+- GPT-5.6 Sol: **Main Operator** for the majority of workflow design, prompts/templates, UI/UX, bounded analytical features, investigation, documentation, Codex specifications, and review.
+- Codex: **Repository Implementer** for scoped code changes and verification against approved design.
+
+Do not escalate to Astra merely because it is a higher-tier model.
+
+## Repository sources of truth
+Before non-trivial work read:
+- `docs/REQUIREMENTS.md`
+- `docs/MASTER_ARCHITECTURE.md`
+- `docs/DECISIONS.md`
+- `docs/PROJECT_STATE.md`
+- `ARCHITECTURE.md`
+
+The detailed product/role/safety rules below remain binding unless explicitly changed through the approved decision process.
+
 ## Product objective
 Build a human-in-the-loop Japanese equity research office. The product should make disciplined research faster without delegating the final investment decision.
 
@@ -25,11 +42,12 @@ Build a human-in-the-loop Japanese equity research office. The product should ma
 - Every important conclusion exposes its evidence and dissent.
 
 ## Safety boundaries
-- Never implement brokerage execution or credential storage.
+- Never implement brokerage execution or credential storage under the current approved scope.
 - Never imply guaranteed returns.
 - Keep a visible informational/research disclaimer.
 - Do not let LLM output silently overwrite verified numerical data.
 - Missing evidence must trigger ANALYSIS BLOCKED.
+- Analysis and actual trading/execution remain separate systems.
 
 ## Agent roster
 ### Management Office (2)
@@ -109,6 +127,29 @@ These are controls, not additional employees, so the public roster remains 27.
 - quarterly thesis review
 - event-triggered disclosure review
 
+## Cost/routing rule
+The 27 roles are a capability catalog, not a mandate to run all roles on every event. Use only the specialists needed for the event/question, retain independent risk/red-team scrutiny when material, and reuse fresh validated outputs where appropriate.
+
+## Architecture escalation
+Report to Sol and require Astra review before adopting changes that materially alter:
+- research/evidence schemas or source-of-truth
+- live financial-data ingestion topology
+- deterministic calculation/risk-engine architecture
+- security/credential boundaries
+- major autonomous recurring actions that affect investment decisions
+- brokerage/execution connectivity
+
+For escalation, start from `docs/ASTRA_REVIEW_PACKAGE.md` and narrow to the specific decision.
+
+## Change control
+For important architecture/policy proposals classify the delta as:
+- Maintain
+- Modify
+- Retire
+- Hold
+
+A major change is not adopted until the user explicitly accepts it.
+
 ## UI requirements
 - iPhone portrait first
 - large tap areas
@@ -127,3 +168,13 @@ These are controls, not additional employees, so the public roster remains 27.
 - decisions persist after reload
 - reset deletes local data only after confirmation
 - no brokerage or secret fields exist
+
+## Completion report
+After changes report:
+- files changed
+- checks/tests run
+- actual results
+- unresolved risks/questions
+- whether Sol/Astra architecture review is recommended
+
+Never claim a command or test succeeded unless it actually ran successfully.
